@@ -1,2 +1,2 @@
 # Nettisivut
-Yksinkertaiset nettisivut
+Yksinkertaiset nettisivut.
