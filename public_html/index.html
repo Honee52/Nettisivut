@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yhteisö</title>
+    <meta name="keywords" content="Yhteisö">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="captcha.js"></script>
+    
+    <style>
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Bring back */
+            
+            /* Sivuston taustakuva */
+            background-image: url('./images/tausta.jpg'); /* Lisää oma kuvasi */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            
+            /* Opacity (0.1 - 1.0) */
+            opacity: 0.5; 
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-top: 70px;      /* Space for Header */
+            padding-bottom: 60px;   /* Space for Footer */
+        }
+
+        /* Läpinäkyvä tausta */
+        main {
+            background: transparent;
+        }
+        
+        .navbar-brand img {
+            max-height: 40px;
+            margin-right: 10px;
+        }
+        
+        .navbar {
+            /* Yläpalkin taustaväri. */
+            background-color: #32CD32 !important;
+            /* Värejä löytyy osoitteesta: https://htmlcolorcodes.com/colors/ */
+        }
+        
+        .navbar .nav-link, .navbar-brand {
+            /* Yläpalkin tekstin väri. */
+            color: black !important;
+        }
+        
+        /* Menuvalikon näppäin (3 viivaa) esim. puhelimen näytössä. */
+        .navbar-toggler .navbar-toggler-icon,
+        .navbar-toggle .icon-bar {
+            /* If the lines are CSS bars */
+            background-color: #32CD32 !important;
+        }
+
+        /* Edellisen taustaväri ja reuna. */
+        .navbar-toggler {
+            background-color: #32CD32 !important; 
+            border: 1px solid #ffffff !important;
+        }       
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+        }
+
+        .content-section {
+            display: none; /* Hide all sections */
+            padding: 40px 0;
+        }
+
+        .active-section {
+            display: block; /* Show selected section */
+        }
+
+        .product-row {
+            margin-bottom: 10px;
+            padding: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        body {
+            color: black !important;
+            /* background-color: #212529; */ /* Valkoinen teksti vaatii tumman taustan, jotta se näkyy! */
+        }
+        
+        #avain{
+            user-select: none;
+            text-decoration:line-through;
+            font-style: italic;
+            font-size: x-large;
+        }
+           
+    </style>
+</head>
+<body onload="generate()">
+
+    <!-- ====================================================================== -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#" onclick="showSection('etusivu')">
+                <img src="./images/logo.png" alt="Logo">  <!-- Lisää oma logo tähän. -->
+                <span class="fw-bold">Yhteisö</span>    <!-- Kirjoita yhteisön (yritys, yhdistys jne.) nimi tähän. -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('etusivu')">Etusivu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('aihe_1')">Aihe 1</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('aihe_2')">Aihe 2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('aihe_3')">Aihe 3</a></li>
+                    <!-- Tarvittaessa lisää uusia aiheita ylläolevan mukaisesti. -->
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('yhteystiedot')">Yhteystiedot</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ====================================================================== -->
+    <main class="container flex-grow-1">
+
+        <!-- ================================================================== -->
+        <!-- ETUSIVU -->
+        <!-- ================================================================== -->
+        <section id="etusivu" class="content-section active-section">
+            <h2>Lisää tähän aiheen 1 otsikko</h2>
+            <p>
+            Lisää tähän aiheen 1 tarkempi selostus.<br />
+            <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed <br />
+            do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br /> 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco  <br /> 
+            laboris nisi ut aliquip ex ea commodo consequat.</i> <br />
+            <!-- Tarvittaessa lisää tekstiä ja vaihda rivi (<br />). -->
+            </p>
+            
+            <h2>Lisää tähän aiheen 2 otsikko</h2>
+            <p><br />
+            Lisää tähän aiheen 2 tarkempi selostus.<br />
+            <i>Quis autem vel eum iure reprehenderit qui in ea voluptate velit <br />
+            esse quam nihil molestiae consequatur.</i> <br />
+            <!-- Tarvittaessa lisää tekstiä ja vaihda rivi (<br />). -->
+            </p> 
+            
+            <h2>Lisää tähän aiheen 3 otsikko</h2>
+            <p>
+            Lisää tähän aiheen 3 tarkempi selostus.<br />
+            <i>Vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</i> <br /> 
+            <!-- Tarvittaessa lisää tekstiä ja vaihda rivi (<br />). -->
+            </p> 
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- AIHE 1 -->
+        <!-- ================================================================== -->
+        <section id="aihe_1" class="content-section">
+            <h2>Aihe 1</h2>
+
+            <div class="row product-row align-items-top">
+                <!-- Poista kommentointi mikäli tähän tulee kuva. -->
+                <div class="col-md-4">
+                    <img src="./images/image1.jpg" class="img-fluid rounded" alt="image1">
+                </div> 
+                <!-- -->
+                <div class="col-md-8">
+                    <h3>Alaotsikko 1</h3>
+                    <p>Kirjoita otsikkoon liittyvä kuvaus tähän.</br>
+                    <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed <br />
+                    do eiusmod tempor incididunt ut labore et dolore magna aliqua.</i> <br /> 
+                    
+                    <!-- Tarvittaessa kirjoita tähän linkki (href) josta saa lisää tietoa. Poista rivi jos et käytä linkkiä. -->
+                    <a href="./index.html" class="special">Tutustu</a>  <!-- Linkki avautuu nykyiseen välilehteen. -->
+                    <!--<a href="./index.html" target="_blank" class="special">Tutustu</a>  <!-- Linkki avautuu uuteen välilehteen. -->
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row product-row align-items-top">
+                <div class="col-md-4">
+                    <img src="./images/image2.jpg" class="img-fluid rounded" alt="image2">
+                </div>
+                <div class="col-md-8">
+                    <h3>Alaotsikko 2</h3>
+                    <p>Kirjoita otsikkoon liittyvä kuvaus tähän.</br>
+                    <i>Ut enim ad minim veniam, quis nostrud exercitation ullamco  <br /> 
+                    laboris nisi ut aliquip ex ea commodo consequat.</i> <br />
+                    
+                    <!-- Tarvittaessa kirjoita tähän linkki (href) josta saa lisää tietoa. Poista rivi jos et käytä linkkiä. -->
+                    <a href="./index.html" class="special">Tutustu</a>  <!-- Linkki avautuu nykyiseen välilehteen. -->
+                    <!--<a href="./index.html" target="_blank" class="special">Tutustu</a>  <!-- Linkki avautuu uuteen välilehteen. -->
+                    </p>
+                </div>
+            </div>
+            
+            <!--
+            Tarvittaessa lisää aiheeseen liittyviä otsikoita edellä olevan mukaisesti.
+            -->
+            
+        </section>
+        
+        <!-- ================================================================== -->
+        <!-- AIHE 2 -->
+        <!-- ================================================================== -->
+        <section id="aihe_2" class="content-section">
+            <h2>Aihe 2</h2>
+
+            <div class="row product-row align-items-top">
+                <div class="col-md-4">
+                    <img src="./images/image3.jpg" class="img-fluid rounded" alt="image3">
+                </div>
+                <div class="col-md-8">
+                    <h3>Alaotsikko 1</h3>
+                    <p>Kirjoita otsikkoon liittyvä kuvaus tähän.</br>
+                    <i>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, </br>
+                    sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</i> </br>
+                    
+                    <!-- Tarvittaessa kirjoita tähän linkki (href) josta saa lisää tietoa. Poista rivi jos et käytä linkkiä. -->
+                    <a href="./index.html" class="special">Tutustu</a>  <!-- Linkki avautuu nykyiseen välilehteen. -->
+                    <!--<a href="./index.html" target="_blank" class="special">Tutustu</a>  <!-- Linkki avautuu uuteen välilehteen. -->
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row product-row align-items-top">
+                <div class="col-md-4">
+                    <img src="./images/image4.jpg" class="img-fluid rounded" alt="image4">
+                </div>
+                <div class="col-md-8">
+                    <h3>Alaotsikko 2</h3>
+                    <p>Kirjoita otsikkoon liittyvä kuvaus tähän.</br>
+                    <i>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, </br>
+                    adipisci velit, sed quia non numquam eius modi tempora.</i> </br>
+                    
+                    <!-- Tarvittaessa kirjoita tähän linkki (href) josta saa lisää tietoa. Poista rivi jos et käytä linkkiä. -->
+                    <a href="./index.html" class="special">Tutustu</a>  <!-- Linkki avautuu nykyiseen välilehteen. -->
+                    <!--<a href="./index.html" target="_blank" class="special">Tutustu</a>  <!-- Linkki avautuu uuteen välilehteen. -->
+                    </p>
+                </div>
+            </div>
+            
+            <!--
+            Tarvittaessa lisää aiheeseen liittyviä otsikoita edellä olevan mukaisesti.
+            -->
+             
+        </section>
+        
+        <!-- ================================================================== -->
+        <!-- AIHE 3 -->
+        <!-- ================================================================== -->
+        <section id="aihe_3" class="content-section">
+            <h2>Aihe 3</h2>
+
+            <div class="row product-row align-items-top">
+                <div class="col-md-4">
+                    <img src="./images/image5.jpg" class="img-fluid rounded" alt="image5">
+                </div>
+                <div class="col-md-8">
+                    <h3>Alaotsikko 1</h3>
+                    <p>Kirjoita otsikkoon liittyvä kuvaus tähän.</br>
+                    <i>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit </br>
+                    laboriosam, nisi ut aliquid ex ea commodi consequatur?</i> </br>
+                    
+                    <!-- Tarvittaessa kirjoita tähän linkki (href) josta saa lisää tietoa. Poista rivi jos et käytä linkkiä. -->
+                    <a href="./index.html" class="special">Tutustu</a>  <!-- Linkki avautuu nykyiseen välilehteen. -->
+                    <!--<a href="./index.html" target="_blank" class="special">Tutustu</a>  <!-- Linkki avautuu uuteen välilehteen. -->
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row product-row align-items-top">
+                <div class="col-md-4">
+                    <img src="./images/image6.jpg" class="img-fluid rounded" alt="image6">
+                </div>
+                <div class="col-md-8">
+                    <h3>Alaotsikko 2</h3>
+                    <p>Kirjoita otsikkoon liittyvä kuvaus tähän.</br>
+                    <i>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia </br>
+                    deserunt mollit anim id est laborum.</i> </br>
+                    
+                    <!-- Tarvittaessa kirjoita tähän linkki (href) josta saa lisää tietoa. Poista rivi jos et käytä linkkiä. -->
+                    <a href="./index.html" class="special">Tutustu</a>  <!-- Linkki avautuu nykyiseen välilehteen. -->
+                    <!--<a href="./index.html" target="_blank" class="special">Tutustu</a>  <!-- Linkki avautuu uuteen välilehteen. -->
+                    </p>
+                </div>
+            </div>
+            
+            <!--
+            Tarvittaessa lisää aiheeseen liittyviä otsikoita edellä olevan mukaisesti.
+            -->
+            
+        </section>
+        
+        <!-- ================================================================== -->
+        <!-- YHTEYSTIEDOT / PALAUTELOMAKE -->
+        <!-- ================================================================== -->
+        <section id="yhteystiedot" class="content-section">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h3>Ota yhteyttä</h3>
+                    <div id="avain" 
+                         class="inline" 
+                         selectable="False">
+                    </div>
+                    <!-- ================================== -->
+                    <!-- Yksinkertainen CAPTCHA: -->
+                    <!-- ================================== -->
+                    <div id="user-input" class="inline">
+                        <input  type="text" id="submit" placeholder="Kirjoita avain tähän" />
+                    </div><br>
+                    <button class="btn btn-primary btn-lg w-30" onclick="tarkista_avain()">Jatka</button>
+                </div>
+                <div class="col-md-6">
+                    <h3>Yhteystiedot</h3>
+                    <p>
+                        <strong>Yhteisön nimi</strong><br>
+                        Mannerheimintie<br>
+                        00100 Helsinki<br>
+                        Finland<br><br>
+                        @ info(at)yhteisö.fi<br>
+                        📞 +358401234567
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- ====================================================================== -->
+    <!-- ALAPALKKI -->
+    <!-- ====================================================================== -->
+    <footer class="bg-transparent text-black fixed-bottom d-flex align-items-center">
+        <div class="container d-flex justify-content-between small">
+            <span>&copy; 2026 Yhteisö</span>
+            <span>Design by Matti Meikäläinen</span>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- ====================================================================== -->
+    <script>
+        // Funktio osioiden vaihtamiseen
+        function showSection(sectionId) {
+            // Piilota kaikki
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active-section');
+            });
+            // Näytä valittu
+            document.getElementById(sectionId).classList.add('active-section');
+            
+            // Sulje mobiilivalikko klikkauksen jälkeen
+            const navbarCollapse = document.getElementById('navbarNav');
+            if (navbarCollapse.classList.contains('show')) {
+                new bootstrap.Collapse(navbarCollapse).hide();
+            }
+        }
+    </script>
+</body>
+</html>

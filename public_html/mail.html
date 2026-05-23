@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail Form</title>
+    <style>
+        body { 
+            font-family: sans-serif; 
+            background: #f0f2f5; 
+            display: flex; 
+            justify-content: center; 
+            padding: 20px; 
+            margin: 0; /* Prevents unwanted scrollbars */
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('./images/kbg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.3; 
+        }
+        
+        .mail-card { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 10px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            /* Desktop width remains tidy */
+            max-width: 400px; 
+        }
+
+        /* Responsive adjustment: allow it to take more space on small screens */
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+            .mail-card { 
+                max-width: 95%; /* Makes the form wider on mobile */
+                padding: 20px;
+            }
+        }
+
+        h2 { margin-top: 0; color: #333; font-size: 1.4rem; }
+        .field { margin-bottom: 15px; }
+        label { display: block; font-size: 0.9rem; margin-bottom: 5px; color: #666; }
+        
+        input, textarea { 
+            width: 100%; 
+            padding: 12px; /* Slightly larger padding for easier tapping */
+            border: 1px solid #ddd; 
+            border-radius: 5px; 
+            box-sizing: border-box;
+            font-size: 16px; /* Prevents iOS auto-zoom on focus */
+        }
+
+        button { 
+            width: 100%; 
+            padding: 14px; 
+            background: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            font-weight: bold;
+            cursor: pointer; 
+            font-size: 1rem;
+        }
+
+        button:hover { background: #0056b3; }
+
+        /* Clean up list styling */
+        .actions { padding: 0; margin: 0; list-style: none; }
+    </style>
+</head>
+<body>
+
+<div class="mail-card">
+    <h2>Ota yhteyttä</h2>
+    <p>Vastaamme kyselyihin niin pian kuin mahdollista!</p>
+    <form method="post" action="./send_mail.php">
+        <div class="field">
+            <label for="name">Nimi</label>
+            <input type="text" name="name" id="name" maxlength="30" required />
+        </div>
+        <div class="field">
+            <label for="email">Sähköposti</label>
+            <input type="email" name="email" id="email" maxlength="50" required />
+        </div>
+        <div class="field">
+            <label for="message">Viesti</label>
+            <textarea name="message" id="message" rows="5" required></textarea>
+        </div>
+        <ul class="actions">
+            <li><button type="submit" name="submit">Lähetä viesti</button></li>
+        </ul>
+    </form>
+</div>
+
+</body>
+</html>
