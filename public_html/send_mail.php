@@ -163,7 +163,6 @@ if(isset($_POST['email'])) {
         (preg_match("/sale/",           $message)) ||
         (preg_match("/Sale/",           $message)) ||
         (preg_match("/search engines/", $message)) ||
-        (preg_match("/see/",            $message)) ||
         (preg_match("/SEO/",            $message)) ||
         (preg_match("/shipping/",       $message)) ||
         (preg_match("/Shipping/",       $message)) ||
