@@ -3,4 +3,4 @@
 - Vaatii jonkin verran HTML/PHP/JS-ohjelmoinnin tuntemista.
 - Muokattavissa tekstieditorilla (esim. Notepad++).
 - HTML/PHP/JS-koodiin sisältyy ohjeita.
-- Webhotelli: php ja sähköpostin lähetys.
+- Webhotelli: vaaditaan php ja sähköpostin lähetys.
